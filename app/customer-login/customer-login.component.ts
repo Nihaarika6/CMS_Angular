@@ -18,7 +18,6 @@ export class CustomerLoginComponent implements OnInit {
   passWord : string;
   customer : Observable<Customer>;
   count : number;
-  // custService : CustomerService;
 
   validate()  {
       this.customerService.validateCustomer(this.userName,this.passWord).subscribe( x => {
@@ -38,6 +37,7 @@ export class CustomerLoginComponent implements OnInit {
   
   constructor(private customerService : CustomerService, private router : Router) { 
     this.count=0;
+    
   }
 
   ngOnInit() {

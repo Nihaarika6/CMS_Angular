@@ -11,23 +11,21 @@ import { Customer } from '../customer';
   styleUrls: ['./customer-info.component.css']
 })
 export class CustomerInfoComponent implements OnInit {
+  
   customerName : string;
   custId : number;
-  customer : Customer;
+  customer : Observable<Customer>;
+  cust : Customer;
   constructor(private customerService : CustomerService) {
-    this.customerName = localStorage.getItem("user");
-    this.customerService.findByCustomerName(this.customerName).subscribe( x => {
-       this.customer=x;
-       localStorage.setItem('customer', JSON.stringify(this.customer));
-       this.custId=x.cusId;
-     },
-    err => {
-      console.log(err);
-    }) 
+    this.customerService.findByCustomerName(localStorage.getItem("user")).subscribe(x => {
+      this.cust=x;
+      localStorage.setItem('customer', JSON.stringify(x));
+    });
    }
-
   ngOnInit() {
-    // this.custId=this.customer.cusId;
-    // alert(this.custId);
+    this.customer = this.customerService.findByCustomerName(localStorage.getItem("user"));
+    // localStorage.setItem('customer', JSON.stringify(this.customer));
+    
+    // alert("Customer Id is  " +this.customer.);
   }
 }

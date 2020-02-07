@@ -1,17 +1,16 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'app-dash-board',
-  templateUrl: './dash-board.component.html',
-  styleUrls: ['./dash-board.component.css']
+  selector: 'app-dash-boardd',
+  templateUrl: './dash-boardd.component.html',
+  styleUrls: ['./dash-boardd.component.css']
 })
-export class DashBoardComponent implements OnInit {
+export class DashBoarddComponent implements OnInit {
 
   userName : string;
   constructor() { 
     this.userName = localStorage.getItem("user");
   }
-
   ngOnInit() {
   }
 
